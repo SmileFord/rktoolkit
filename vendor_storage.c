@@ -487,12 +487,12 @@ int rkvendor_read(int vendor_id, char *data, int size)
 		return -1;
 	}
 
-	if ( size < strlen(req->data) ) {
+	if ( size < req->len ) {
 		fprintf(stderr, "vendor storage: param size is lower then read size %d\n", strlen(req->data) );
 		return -1;
 	}
 
-	memcpy(data, req->data, strlen(req->data));
+	memcpy(data, req->data, req->len);
 	return 0;
 }
 
